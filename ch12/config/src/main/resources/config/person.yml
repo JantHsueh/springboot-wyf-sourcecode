@@ -1,3 +1,7 @@
 spring:
-  jpa:
-    database: HSQL 
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: O#3j*PM:,P6
+    initialize: true
+    url: jdbc:mysql://114.115.208.210:7743/test_watch?characterEncoding=UTF-8&useSSL=false

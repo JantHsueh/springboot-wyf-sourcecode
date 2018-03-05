@@ -7,6 +7,7 @@ spring:
       discovery:
         enabled: true
         service-id: CONFIG #1
+      profile: release
 eureka:
   instance:
     non-secure-port: ${server.port:8082}

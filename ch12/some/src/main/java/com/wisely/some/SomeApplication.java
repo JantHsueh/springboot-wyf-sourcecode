@@ -16,7 +16,8 @@ public class SomeApplication {
 	
 	 @RequestMapping(value = "/getsome")
 	 public String getsome(){
-		 return message;
+//		 return message;
+		 return "123456";
 	 }
 	public static void main(String[] args) {
 		SpringApplication.run(SomeApplication.class, args);

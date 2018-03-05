@@ -18,7 +18,5 @@ public class CustomServletContainer implements EmbeddedServletContainerCustomize
 		container.setSessionTimeout(10,TimeUnit.MINUTES);
 		
 	}
-	
-
 
 }

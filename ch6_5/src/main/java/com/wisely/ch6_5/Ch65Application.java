@@ -6,14 +6,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wisely.spring_boot_starter_hello.HelloService;
+import com.xuexuan.HelloService;
+
 @RestController
 @SpringBootApplication
 public class Ch65Application {
 	
 	@Autowired
 	HelloService helloService;
-	
+
 	@RequestMapping("/")
 	public String index(){
 		return helloService.sayHello();

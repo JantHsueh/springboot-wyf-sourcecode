@@ -1,12 +1,13 @@
 spring:
   application:
-    name: some
+    name: rfid
   cloud:
     config:
       enabled: true
       discovery:
         enabled: true
         service-id: CONFIG
+      profile: dev
 eureka:
   instance:
     non-secure-port: ${server.port:8083}

@@ -1,9 +1,20 @@
+#spring:
+#  cloud:
+#    config:
+#      server:
+#        native:
+#          search-locations: classpath:/config #1
 spring:
   cloud:
     config:
       server:
-        native:
-          search-locations: classpath:/config #1
-
+        git:
+#          uri: https://gitee.com/xuexuan/SpringBootConfig.git
+          uri: https://gitee.com/jsps/config.git
+          search-paths: config*
+          username: 326664162@qq.com
+          password: xx>5521507456
+        bootstrap: true
+      enabled: true
 server:
   port: 8888

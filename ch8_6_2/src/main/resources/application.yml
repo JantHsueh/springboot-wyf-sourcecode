@@ -1,0 +1,6 @@
+#logging.level.org.springframework.data = DEBUG
+spring:
+ redis:
+  password: LAgs:xX9|O<
+  host: 114.115.208.210
+  database: 3

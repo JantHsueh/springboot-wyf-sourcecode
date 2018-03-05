@@ -1,6 +1,7 @@
 package com.wisely.web;
 
-import java.util.List;
+import com.wisely.dao.StudentRepository;
+import com.wisely.domain.Student;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,14 +11,13 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wisely.dao.PersonRepository;
-import com.wisely.domain.Person;
+import java.util.List;
 
 @RestController
 public class DataController {
 	//1 Spring Data JPA已自动为你注册bean，所以可自动注入
 	@Autowired
-	PersonRepository personRepository;
+	StudentRepository personRepository;
 	
 	/**
 	 * 保存
@@ -32,9 +32,9 @@ public class DataController {
 	 * 
 	 */
 	@RequestMapping("/save")
-	public Person save(String name,String address,Integer age){
+	public Student save(String name, String address, Integer age){
 		
-		Person p = personRepository.save(new Person(null, name, age, address));
+		Student p = personRepository.save(new Student(null, name, age, address));
 		
 		return p;
 		
@@ -46,9 +46,9 @@ public class DataController {
 	 * 测试findByAddress
 	 */
 	@RequestMapping("/q1")
-	public List<Person> q1(String address){
+	public List<Student> q1(String address){
 		
-		List<Person> people = personRepository.findByAddress(address);
+		List<Student> people = personRepository.findByAddress(address);
 		
 		return people;
 		
@@ -58,9 +58,9 @@ public class DataController {
 	 * 测试findByNameAndAddress
 	 */
 	@RequestMapping("/q2")
-	public Person q2(String name,String address){
+	public Student q2(String name, String address){
 		
-		Person people = personRepository.findByNameAndAddress(name, address);
+		Student people = personRepository.findByNameAndAddress(name, address);
 		
 		return people;
 		
@@ -70,33 +70,33 @@ public class DataController {
 	 * 测试withNameAndAddressQuery
 	 */
 	@RequestMapping("/q3")
-	public Person q3(String name,String address){
-		
-		Person p = personRepository.withNameAndAddressQuery(name, address);
-		
+	public Student q3(String name, String address){
+
+		Student p = personRepository.withNameAndAddressQuery(name, address);
+
 		return p;
-		
+
 	}
-	
+
 	/**
 	 * 测试withNameAndAddressNamedQuery
 	 */
 	@RequestMapping("/q4")
-	public Person q4(String name,String address){
-		
-		Person p = personRepository.withNameAndAddressNamedQuery(name, address);
-		
+	public Student q4(String name, String address){
+
+		Student p = personRepository.withNameAndAddressNamedQuery(name, address);
+
 		return p;
-		
+
 	}
 	
 	/**
 	 * 测试排序
 	 */
 	@RequestMapping("/sort")
-	public List<Person> sort(){
+	public List<Student> sort(){
 		
-		List<Person> people = personRepository.findAll(new Sort(Direction.ASC,"age"));
+		List<Student> people = personRepository.findAll(new Sort(Direction.ASC,"age"));
 		
 		return people;
 		
@@ -106,23 +106,23 @@ public class DataController {
 	 * 测试分页
 	 */
 	@RequestMapping("/page")
-	public Page<Person> page(){
+	public Page<Student> page(){
 		
-		Page<Person> pagePeople = personRepository.findAll(new PageRequest(1, 2));
+		Page<Student> pagePeople = personRepository.findAll(new PageRequest(1, 2));
 		
 		return pagePeople;
 		
 	}
 	
 	
-	@RequestMapping("/auto")
-	public Page<Person> auto(Person person){
-		
-		Page<Person> pagePeople = personRepository.findByAuto(person, new PageRequest(0, 10));
-		
-		return pagePeople;
-		
-	}
+//	@RequestMapping("/auto")
+//	public Page<Student> auto(Student person){
+//
+//		Page<Student> pagePeople = personRepository.findByAuto(person, new PageRequest(0, 10));
+//
+//		return pagePeople;
+//
+//	}
 	
 	
 
