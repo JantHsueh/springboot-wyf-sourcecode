@@ -1,5 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
-/.idea/
+/.idea/*
 /ch12/ch12.iml
 /ch12/some/some.iml
 /ch12/person/person.iml
@@ -53,3 +53,5 @@ springbootstarterhello/src/test/
 springbootstarterhello/target/
 /ch9_3_5/ch9_3_5.iml
 /ch8_6_2/target/
+/ch8_5/target/
+/ch5_2_2/target/
