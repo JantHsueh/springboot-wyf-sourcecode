@@ -28,7 +28,7 @@
     var sock = new SockJS("/endpointChat"); //1
     var stomp = Stomp.over(sock);
     stomp.connect('guest', 'guest', function(frame) {
-        stomp.subscribe("/user/queue/notifications", handleNotification);//2
+        stomp.subscribe("/user/123456/notifications", handleNotification);//2
     });
 
 

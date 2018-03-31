@@ -14,8 +14,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/login").permitAll()//1根路径和/login路径不拦截
-                .anyRequest().authenticated()
+                .antMatchers("/","/chat").permitAll()//1根路径和/login路径不拦截
+//                .anyRequest().authenticated()
+//                .permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login") //2登陆页面

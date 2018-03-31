@@ -1,6 +1,7 @@
 package com.wisely.ch7_6.web;
 
-import java.security.Principal;
+import com.wisely.ch7_6.domain.WiselyMessage;
+import com.wisely.ch7_6.domain.WiselyResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -8,8 +9,7 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
-import com.wisely.ch7_6.domain.WiselyMessage;
-import com.wisely.ch7_6.domain.WiselyResponse;
+import java.security.Principal;
 
 @Controller
 public class WsController {
@@ -24,7 +24,7 @@ public class WsController {
 	@Autowired
 	private SimpMessagingTemplate messagingTemplate;//1
 
-	@MessageMapping("/chat")
+//	@MessageMapping("/chat")
 	public void handleChat(Principal principal, String msg) { //2
 		if (principal.getName().equals("wyf")) {//3
 			messagingTemplate.convertAndSendToUser("wisely",
@@ -35,5 +35,15 @@ public class WsController {
 					"/queue/notifications", principal.getName() + "-send:"
 							+ msg);
 		}
+	}
+
+
+	@MessageMapping("/chat")
+	public void handleChat(String msg) { //2
+			messagingTemplate.convertAndSendToUser("123456",
+					"/notifications",  "-send:"
+							+ msg);
+
+
 	}
 }

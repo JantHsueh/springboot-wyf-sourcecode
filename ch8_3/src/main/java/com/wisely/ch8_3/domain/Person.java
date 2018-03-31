@@ -3,8 +3,10 @@ package com.wisely.ch8_3.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "person")
 public class Person {
 	@Id 
 	@GeneratedValue

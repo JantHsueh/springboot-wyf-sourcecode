@@ -39,6 +39,7 @@
         <module>ch11_3</module>
         <module>ch12</module>
         <module>springbootstarterhello</module>
+        <module>webSocket</module>
     </modules>
 
 	<parent>
