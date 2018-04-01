@@ -6,12 +6,13 @@ import com.wisely.ch7_6.domain.WiselyResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
 
-@Controller
+@RestController
 public class WsController {
 
 	@MessageMapping("/welcome")
@@ -37,11 +38,16 @@ public class WsController {
 		}
 	}
 
+	@Autowired
+	private SimpMessageSendingOperations simpMessageSendingOperations;
+
 
 	@MessageMapping("/chat")
 	public void handleChat(String msg) { //2
-			messagingTemplate.convertAndSendToUser("123456",
-					"/notifications",  "-send:"
+		String name ="123456";
+//		simpMessageSendingOperations.convertAndSendToUser(name,"/message",new Greeting("P2P: "+name));
+		simpMessageSendingOperations.convertAndSendToUser(name,
+					"/message",  "-send:"
 							+ msg);
 
 

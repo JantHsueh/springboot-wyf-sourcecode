@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Hello WebSocket</title>
-    <script src="../static/sockjs.js"></script>
-    <script src="../static/stomp.js"></script>
-    <script src="../static/jquery-3.2.1.min.js"></script>
+    <!--<script src="../static1/sockjs.js"></script>-->
+    <!--<script src="../static1/stomp.js"></script>-->
+    <!--<script src="../static1/jquery-3.2.1.min.js"></script>-->
+
+    <script th:src="@{sockjs.min.js}"></script>
+    <script th:src="@{stomp.min.js}"></script>
+    <script th:src="@{jquery.js}"></script>
     <!--<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>-->
     <script type="text/javascript">
         var id = "0";
@@ -58,7 +62,7 @@
         function sendName() {
             var name = document.getElementById('name').value;
             stompClient.send("/app/hello", {}, JSON.stringify({ 'name': name }));
-            stompClient.send("/app/message", {}, JSON.stringify({ 'name': name }));
+            // stompClient.send("/app/message", {}, JSON.stringify({ 'name': name }));
         }
 
         function connectAny() {
@@ -68,7 +72,8 @@
             stompClient.connect({}, function(frame) {
                 setConnected(true);
                 console.log('Connected: ' + frame);
-                stompClient.subscribe('/user/'+id+'/message', function(greeting){
+                // stompClient.subscribe('/user/'+id+'/message', function(greeting){
+                stompClient.subscribe('/user/123/message', function(greeting){
                     alert(JSON.parse(greeting.body).content);
                     showGreeting(JSON.parse(greeting.body).content);
                 });
