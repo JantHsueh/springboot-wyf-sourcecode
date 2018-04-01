@@ -28,11 +28,11 @@ public class GreetingController {
      */
     @MessageMapping("/hello") //"/hello"为WebSocketConfig类中registerStompEndpoints()方法配置的
 //    @SendTo("/topic/greetings")
-    public Greeting greeting(HelloMessage message) {
+    public void  greeting(HelloMessage message) {
         System.out.println("connected successfully greeting ....");
         String name = message.getName();
-        simpMessageSendingOperations.convertAndSendToUser(name,"/message",new Greeting("P2P: "+name));
-        return new Greeting("Hello,"+name);
+        simpMessageSendingOperations.convertAndSendToUser("123","/message",new Greeting("P2P: "+name));
+//        return new Greeting("Hello,"+name);
     }
 
 //    @SubscribeMapping("/macro")
